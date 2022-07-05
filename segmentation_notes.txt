@@ -1,0 +1,32 @@
+Image Classification
+Object Detection
+Segmentation
+ - Semantic Segmentation
+ - Instance Segmentation
+ - Panoptic Segmentation
+--------------------------------------------
+RCNN - Region Based Semantic Segmentation
+FCN - Fully Convolutional Network
+Fast RCNN
+Faster RCNN
+Mask RCNN
+--------------------------------------------
+YOLO You Only Look Once / SSD - Single Shot Detection
+YOLACT - You Onl Look at coefficients
+--------------------------------------------
+Deep Learning Models for Image Segmentation
+- FCN
+- Encoder-Decoder
+  - U-Net and V-Net
+- RCNN Based Models - Instance Segmentation
+- GAN - Generative Modeling
+- Attention Based Models
+- Dilated Convolutional Models
+--------------------------------------------------
+Upsampling and Downsampling
+
+
+
+
+
+
