@@ -17,7 +17,7 @@ TEST_PATH = "NuclieDataset/stage1_test"
 TRAIN_IMAGES_FOLDERS = os.listdir(TRAIN_PATH)
 n = len(TRAIN_IMAGES_FOLDERS)
 X_train = np.zeros((n, IMG_HEIGHT, IMG_WIDTH, IMG_CHANNELS), dtype=np.uint8)
-Y_train = np.zeros((n, IMG_HEIGHT, IMG_WIDTH, 1), dtype=np.uint8)
+Y_train = np.zeros((n, IMG_HEIGHT, IMG_WIDTH, 1), dtype=np.bool)
 
 for i in tqdm(range(len(TRAIN_IMAGES_FOLDERS))):
     img_path = TRAIN_PATH + '/' + TRAIN_IMAGES_FOLDERS[i] + "/images/"
@@ -28,7 +28,7 @@ for i in tqdm(range(len(TRAIN_IMAGES_FOLDERS))):
     X_train[i] = img
     mask_path = TRAIN_PATH + '/' + TRAIN_IMAGES_FOLDERS[i] + "/masks/"
     mask_images = os.listdir(mask_path)
-    mask = np.zeros([IMG_HEIGHT, IMG_WIDTH, 1], dtype=np.uint8)
+    mask = np.zeros([IMG_HEIGHT, IMG_WIDTH, 1], dtype=np.bool)
     for j in range(len(mask_images)):
         mask_img = imread(mask_path + "/" + mask_images[j])
         mask_img = np.expand_dims(resize(mask_img, (IMG_HEIGHT, IMG_WIDTH), mode='constant',
@@ -37,11 +37,11 @@ for i in tqdm(range(len(TRAIN_IMAGES_FOLDERS))):
     Y_train[i] = mask
     
 
-imshow(X_train[150])
-plt.show()
+# imshow(X_train[150])
+# plt.show()
 
-imshow(np.squeeze(Y_train[150]))
-plt.show()
+# imshow(np.squeeze(Y_train[150]))
+# plt.show()
 
 
 TEST_IMAGES_FOLDERS = os.listdir(TEST_PATH)
@@ -131,8 +131,8 @@ callbacks = [
     tf.keras.callbacks.TensorBoard(log_dir='logs')]
 
 
-results = model.fit(X_train, Y_train, validation_split=0.1, batch_size=16, 
-          epochs=20, callbacks=callbacks)
+results = model.fit(X_train, Y_train, validation_split=0.1, 
+                    batch_size=16, epochs=20, callbacks=callbacks)
 
 
 test_predictions = model.predict(X_test)
